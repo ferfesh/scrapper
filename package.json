@@ -19,7 +19,10 @@
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
+    "https-proxy-agent": "^7.0.0",
     "linkedin-jobs-scraper": "^14.0.11",
     "moment": "^2.29.4",
     "puppeteer": "^19.8.5"
