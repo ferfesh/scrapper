@@ -22,4 +22,5 @@ const proxyPassword = 'pv9u94nvzoz2';
 export const axiosInstance = axios.create({
   // proxy: false,
   httpAgent: new HttpsProxyAgent('https://spns1ir6x6:qUyt2u5oO7d9yVpkYx@gate.smartproxy.com:7000'),
+  timeout: 10000,
 });
