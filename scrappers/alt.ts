@@ -11,7 +11,7 @@ export const altScrapper = async (url: string, selector: string) => {
   let retries = 0;
   while (retries < MAX_RETRIES) {
     try {
-      const { data } = await axios.get(url);
+      const { data } = await axiosInstance.get(url);
       const $ = load(data);
       let result: number = -1;
       switch (selector) {
