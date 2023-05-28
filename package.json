@@ -1,0 +1,27 @@
+{
+  "name": "crawler-juniorjobs",
+  "version": "1.0.0",
+  "description": "crawler",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "dev": "nodemon index.ts",
+    "gen": "npx prisma generate"
+  },
+  "keywords": [],
+  "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "prisma": "^4.12.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "dotenv": "^16.0.3",
+    "linkedin-jobs-scraper": "^14.0.11",
+    "moment": "^2.29.4",
+    "puppeteer": "^19.8.5"
+  }
+}
