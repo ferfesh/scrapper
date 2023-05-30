@@ -11,24 +11,32 @@ export const altScrapper = async (url: string, selector: string) => {
   let retries = 0;
   while (retries < MAX_RETRIES) {
     try {
-      const { data } = await axiosInstance.get(url);
+
+      // const { data } = await axiosInstance.get(url);
+      const { data } = await axios.get(url, {
+        timeout: 10000,
+      });
+
       const $ = load(data);
       let result: number = -1;
       switch (selector) {
-        case 'amazon':
+        case 'Amazon':
           result = extractNumbersFromString($('.a-price-whole').first().text().trim());
           break;
-        case 'noon':
+        case 'Noon':
           result = extractNumbersFromString($('.priceNow').first().text().trim());
           break;
         case 'jumia':
           result = extractNumbersFromString($('.-b.-ltr.-tal.-fs24').first().text().trim());
           break;
+        case 'hatly':
+          result = extractNumbersFromString($('.price').first().text().trim());
+          break;
       }
-      console.log(result)
+      // console.log(result)
       return result;
     } catch (e: any) {
-      // console.log(e)
+      console.log(e.message)
       retries++;
     }
   }
