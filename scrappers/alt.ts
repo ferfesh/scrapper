@@ -16,7 +16,7 @@ export const altScrapper = async (url: string, selector: string) => {
       const { data } = await axios.get(url, {
         timeout: 10000,
         headers: {
-          'User-Agent': 'Your Bot User-Agent',
+          'User-Agent': selector === 'Jumia' ? 'money-tracker-bot' : ''
         }
       });
 
