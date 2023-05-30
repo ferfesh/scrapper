@@ -26,7 +26,7 @@ export const altScrapper = async (url: string, selector: string) => {
         case 'Noon':
           result = extractNumbersFromString($('.priceNow').first().text().trim());
           break;
-        case 'jumia':
+        case 'Jumia':
           result = extractNumbersFromString($('.-b.-ltr.-tal.-fs24').first().text().trim());
           break;
         case 'hatly':
