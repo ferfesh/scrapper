@@ -27,60 +27,7 @@ export const watch = async () => {
   console.time('timer')
   // get all products that are active
   const p = await Product.find({ status: 1 }).populate('owner');
-  const p2 = [
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    // ...p,
-    ...p,
-  ]
-  // console.log(products.length)
-  const products = splitArray(p2, 50);
+  const products = splitArray(p, 50);
 
 
   const promises = []
@@ -96,7 +43,7 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(350)
+      await delay(30);
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
@@ -127,7 +74,7 @@ export const watch = async () => {
 
   // create a map of products for easy access to product data in O(1)
   const productsMap = new Map();
-  for (const product of p2) {
+  for (const product of p) {
     productsMap.set(product._id, product);
   }
 
