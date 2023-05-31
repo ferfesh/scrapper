@@ -10,10 +10,14 @@ interface IScannedProduct {
 }
 
 export const watch = async () => {
+  const date = new Date();
+
+  console.log(`This task is running every minute - ${date.getHours()}:${date.getMinutes()}`);
+
   console.time('timer')
   // get all products that are active
   const products = await Product.find({ status: 1 }).populate('owner');
-  console.log(products.length)
+  // console.log(products.length)
 
   // initiate a promise for each product
   const scannedProducts: Promise<IScannedProduct>[] = [];
@@ -47,8 +51,10 @@ export const watch = async () => {
       })
     }
   })
-  
+
   console.timeEnd('timer')
-  console.log(errors)
-  delay(10000).then(() => watch())
+
+
+  // console.log(errors)
+  // delay(10000).then(() => watch())
 }

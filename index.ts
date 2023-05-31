@@ -1,3 +1,4 @@
+import corn from 'node-cron';
 import 'module-alias/register';
 import dotenv from 'dotenv';
 import connectDatabase from './models/connect';
@@ -8,7 +9,11 @@ dotenv.config();
 connectDatabase();
 
 
-watch()
+corn.schedule('* * * * *', watch, {
+  name: 'Main Job',
+});
+
+// watch()
 
 
 // (async () => {
