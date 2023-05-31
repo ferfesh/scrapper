@@ -50,7 +50,6 @@ export const watch = async () => {
     await delay(2000)
   }
 
-  console.log(fetchedScannedProducts)
   // initiate a promise for each product
   // const scannedProducts: Promise<IScannedProduct>[] = [];
   // for (const product of products) {
@@ -77,8 +76,6 @@ export const watch = async () => {
   for (const product of p) {
     productsMap.set(product._id, product);
   }
-
-  console.log(productsMap)
 
   // compare the prices and send a message if the price is lower than the previous price
   // for(const el of fetchedScannedProducts) {
