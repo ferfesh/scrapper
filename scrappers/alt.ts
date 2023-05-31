@@ -15,7 +15,6 @@ export const altScrapper = async (url: string, selector: string) => {
   let retries = 0;
   while (retries < MAX_RETRIES) {
     try {
-
       // const { data } = await axiosInstance.get(url);
       const { data } = await axios.get(url, {
         timeout: 10000,
@@ -42,7 +41,7 @@ export const altScrapper = async (url: string, selector: string) => {
     } catch (e: any) {
       console.log(e.message)
       retries++;
-      delay(5000);
+      await delay(5000);
     }
   }
   errors++
