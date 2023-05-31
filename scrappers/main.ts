@@ -96,7 +96,7 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(150)
+      await delay(350)
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
