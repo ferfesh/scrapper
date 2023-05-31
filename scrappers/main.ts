@@ -132,17 +132,16 @@ export const watch = async () => {
   console.log(productsMap)
 
   // compare the prices and send a message if the price is lower than the previous price
-  fetchedScannedProducts.forEach(el => {
-    console.log(el.price)
-    console.log(productsMap.get(el.productId)?.price)
-    if (el?.price && el?.price <= productsMap.get(el.productId)?.price) {
-      sendTelegramMessage('', [], {
-        currentPrice: el.price,
-        previousPrice: productsMap.get(el.productId)?.price as number,
-        url: productsMap.get(el.productId)?.url as string
-      })
-    }
-  })
+  // for(const el of fetchedScannedProducts) {
+  //   if (el?.price && el?.price <= productsMap.get(el.productId)?.price) {
+  //     sendTelegramMessage('', [], {
+  //       currentPrice: el.price,
+  //       previousPrice: productsMap.get(el.productId)?.price as number,
+  //       url: productsMap.get(el.productId)?.url as string
+  //     })
+  //   }
+  //   delay(50)
+  // }
 
   console.timeEnd('timer')
 
@@ -151,3 +150,4 @@ export const watch = async () => {
   resetErrors()
   // delay(10000).then(() => watch())
 }
+//25
