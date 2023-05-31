@@ -1,5 +1,5 @@
 import Product, { IProduct } from "@/models/product";
-import { altScrapper, errors } from "./alt";
+import { altScrapper, errors, resetErrors } from "./alt";
 import { sendTelegramMessage } from "@/utils/telegram";
 import { delay } from "@/utils/helpers";
 
@@ -16,7 +16,59 @@ export const watch = async () => {
 
   console.time('timer')
   // get all products that are active
-  const products = await Product.find({ status: 1 }).populate('owner');
+  const p = await Product.find({ status: 1 }).populate('owner');
+  const products = [
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+    ...p,
+  ]
   // console.log(products.length)
 
   // initiate a promise for each product
@@ -55,6 +107,7 @@ export const watch = async () => {
   console.timeEnd('timer')
 
 
-  // console.log(errors)
+  console.log('errors', errors);
+  resetErrors()
   // delay(10000).then(() => watch())
 }

@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { load } from 'cheerio';
 import { axiosInstance } from '../utils/client';
-import { extractNumbersFromString } from '../utils/helpers';
+import { delay, extractNumbersFromString } from '../utils/helpers';
 
 
 export let errors = 0
 const MAX_RETRIES = 3; // Maximum number of retries
+
+export const resetErrors = () => {
+  errors = 0
+}
 
 export const altScrapper = async (url: string, selector: string) => {
   let retries = 0;
@@ -38,6 +42,7 @@ export const altScrapper = async (url: string, selector: string) => {
     } catch (e: any) {
       console.log(e.message)
       retries++;
+      delay(1000);
     }
   }
   errors++
