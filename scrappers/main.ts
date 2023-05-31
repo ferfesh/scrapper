@@ -100,6 +100,7 @@ export const watch = async () => {
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
+    await delay(2000)
   }
 
   console.log(fetchedScannedProducts)
