@@ -41,7 +41,7 @@ export const altScrapper = async (url: string, selector: string) => {
     } catch (e: any) {
       console.log(e.message)
       retries++;
-      await delay(5000);
+      await delay(15000);
     }
   }
   errors++
