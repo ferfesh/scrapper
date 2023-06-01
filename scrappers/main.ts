@@ -78,16 +78,16 @@ export const watch = async () => {
   }
 
   // compare the prices and send a message if the price is lower than the previous price
-  // for(const el of fetchedScannedProducts) {
-  //   if (el?.price && el?.price <= productsMap.get(el.productId)?.price) {
-  //     sendTelegramMessage('', [], {
-  //       currentPrice: el.price,
-  //       previousPrice: productsMap.get(el.productId)?.price as number,
-  //       url: productsMap.get(el.productId)?.url as string
-  //     })
-  //   }
-  //   delay(50)
-  // }
+  for(const el of fetchedScannedProducts) {
+    if (el?.price && el?.price <= productsMap.get(el.productId)?.price) {
+      sendTelegramMessage('', [], {
+        currentPrice: el.price,
+        previousPrice: productsMap.get(el.productId)?.price as number,
+        url: productsMap.get(el.productId)?.url as string
+      })
+    }
+    delay(50)
+  }
 
   console.timeEnd('timer')
 
