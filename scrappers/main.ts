@@ -43,7 +43,7 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(30);
+      await delay(1000);
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
