@@ -30,12 +30,12 @@ export const altScrapper = async (url: string, selector: string) => {
         case 'Noon':
           result = extractNumbersFromString($('.priceNow').first().text().trim());
           break;
-        case 'Jumia':
-          result = extractNumbersFromString($('.-b.-ltr.-tal.-fs24').first().text().trim());
-          break;
-        case 'hatly':
-          result = extractNumbersFromString($('.price').first().text().trim());
-          break;
+        // case 'Jumia':
+        //   result = extractNumbersFromString($('.-b.-ltr.-tal.-fs24').first().text().trim());
+        //   break;
+        // case 'hatly':
+        //   result = extractNumbersFromString($('.price').first().text().trim());
+        //   break;
       }
       // console.log(result)
       return result;
