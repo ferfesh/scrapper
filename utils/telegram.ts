@@ -12,11 +12,18 @@ export const sendTelegramMessage = async (
   chatId: string[],
   messageData: ITelegramMessageData
 ) => {
-  const bot = new TelegramBot('6226231226:AAEQbySbEYIjcay2WqeNhKvbC8sM-9xz30g');
+  try {
+    const bot = new TelegramBot(token);
 
-  const message = `تم تغير سعر المنتج 
-  \n السعر الحالي: ${messageData.currentPrice}
-  \n سعر المراقبة: ${messageData.previousPrice}
-  \n ${messageData.url}`;
-  bot.sendMessage(2026902039, message);
+    const message = `تم تغير سعر المنتج 
+    \n السعر الحالي: ${messageData.currentPrice}
+    \n سعر المراقبة: ${messageData.previousPrice}
+    \n ${messageData.url}`;
+    chatId.forEach(id => {
+      bot.sendMessage(id, message);
+    })
+  } catch (e) {
+    console.log(e)
+  }
+
 }
