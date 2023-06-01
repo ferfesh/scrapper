@@ -19,7 +19,7 @@ export const sendTelegramMessage = async (
     \n السعر الحالي: ${messageData.currentPrice}
     \n سعر المراقبة: ${messageData.previousPrice}
     \n ${messageData.url}`;
-    chatId.forEach(id => {
+    chatId?.forEach(id => {
       bot.sendMessage(id, message);
     })
   } catch (e) {

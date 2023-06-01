@@ -81,7 +81,7 @@ export const watch = async () => {
   for (const el of fetchedScannedProducts) {
     if (el?.price && el?.price <= productsMap.get(el.productId)?.price) {
       const product = productsMap.get(el.productId);
-      sendTelegramMessage(product?.user?.telegramToken, product?.user?.telegramChatId, {
+      sendTelegramMessage(product?.owner?.telegramToken, product?.owner?.telegramChatId, {
         currentPrice: el.price,
         previousPrice: product?.price as number,
         url: product?.url as string
