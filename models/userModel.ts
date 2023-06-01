@@ -12,6 +12,21 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  activeProductsLimit: {
+    type: Number,
+    default: 100,
+    required: true,
+    min: 1,
+  },
+  telegramToken: {
+    type: String,
+    trim: true,
+  },
+  telegramChatId: {
+    type: [String],
+    trim: true,
+    maxlength: 3
+  },
   status: {
     type: Number,
     default: 1,
