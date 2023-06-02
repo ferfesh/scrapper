@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node index.ts",
     "dev": "nodemon index.ts",
-    "build" : "tsc --outDir dist"
+    "build" : "tsc -p ."
   },
   "keywords": [],
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
