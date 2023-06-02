@@ -24,7 +24,7 @@ export const watch = async () => {
 
   console.log(`This task is running every minute - ${date.getHours()}:${date.getMinutes()}`);
 
-  console.time('timer')
+  console.time(`${date.getHours()}:${date.getMinutes()}`)
   // get all products that are active
   const p = await Product.find({ status: 1 }).populate('owner');
   const products = splitArray(p, 20);
@@ -90,9 +90,10 @@ export const watch = async () => {
     delay(50)
   }
 
-  console.timeEnd('timer')
+  console.timeEnd(`${date.getHours()}:${date.getMinutes()}`)
 
 
+  console.log('Success', p.length - errors);
   console.log('errors', errors);
   resetErrors()
   // delay(10000).then(() => watch())
