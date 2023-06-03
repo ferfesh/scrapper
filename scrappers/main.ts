@@ -96,6 +96,6 @@ export const watch = async () => {
   console.log('Success', p.length - errors);
   console.log('errors', errors);
   resetErrors()
-  // delay(10000).then(() => watch())
+  delay(10000).then(() => watch())
 }
 //25

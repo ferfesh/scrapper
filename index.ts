@@ -9,11 +9,11 @@ dotenv.config();
 connectDatabase();
 
 
-corn.schedule('*/2 * * * *', watch, {
-  name: 'Main Job',
-});
+// corn.schedule('*/2 * * * *', watch, {
+//   name: 'Main Job',
+// });
 
-// watch()
+watch()
 
 
 // (async () => {
