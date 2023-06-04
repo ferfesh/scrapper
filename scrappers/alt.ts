@@ -23,7 +23,7 @@ export const altScrapper = async (url: string, selector: string) => {
       const $ = load(data);
       let result: number = NaN;
 
-      if (selector === 'amazon') {
+      if (selector === 'Amazon') {
         const checkIfNotExists = $('#availability .a-size-medium.a-color-price').length > 0;
         if (checkIfNotExists)
           return result;
