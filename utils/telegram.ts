@@ -14,7 +14,6 @@ export const sendTelegramMessage = async (
 ) => {
   try {
     const bot = new TelegramBot(token);
-
     const message = `تم تغير سعر المنتج 
     \n السعر الحالي: ${messageData.currentPrice}
     \n سعر المراقبة: ${messageData.previousPrice}

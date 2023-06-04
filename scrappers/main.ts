@@ -87,7 +87,6 @@ export const watch = async () => {
         url: product?.url as string
       })
     }
-    delay(50)
   }
 
   console.timeEnd(`${date.getHours()}:${date.getMinutes()}`)
