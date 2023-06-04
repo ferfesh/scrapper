@@ -21,7 +21,14 @@ export const altScrapper = async (url: string, selector: string) => {
         timeout: 10000,
       });
       const $ = load(data);
-      let result: number = -1;
+      let result: number = NaN;
+
+      if (selector === 'amazon') {
+        const checkIfNotExists = $('#availability .a-size-medium.a-color-price').length > 0;
+        if (checkIfNotExists)
+          return result;
+      }
+
       switch (selector) {
         case 'Amazon':
           result = extractNumbersFromString($('.a-price-whole').first().text().trim());

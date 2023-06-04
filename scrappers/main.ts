@@ -47,6 +47,7 @@ export const watch = async () => {
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
+    promises.length = 0;
     await delay(5000)
   }
 
