@@ -1,7 +1,7 @@
-import Product, { IProduct } from "@/models/product";
+import Product, { IProduct } from "../models/product";
 import { altScrapper, errors, resetErrors } from "./alt";
-import { sendTelegramMessage } from "@/utils/telegram";
-import { delay } from "@/utils/helpers";
+import { sendTelegramMessage } from "../utils/telegram";
+import { delay } from "../utils/helpers";
 
 
 interface IScannedProduct {
