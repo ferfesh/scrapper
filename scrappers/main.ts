@@ -26,8 +26,9 @@ export const watch = async () => {
 
   console.time(`${date.getHours()}:${date.getMinutes()}`)
   // get all products that are active
+  const totalLength = await Product.find({ status: 1 }).countDocuments();
   const p = await Product.find({ status: 1 }).populate('owner');
-  const products = splitArray(p, 40);
+  const products = splitArray(p, totalLength / 2);
 
 
   const promises = []
@@ -43,7 +44,7 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(1000);
+      await delay(250);
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
