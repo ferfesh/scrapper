@@ -26,3 +26,28 @@ export const sendTelegramMessage = async (
   }
 
 }
+
+export const sendTelegramStats = async (
+  token: string,
+  chatId: string,
+  stats: {
+    batch: number;
+    products: number;
+    requests: number;
+    errors: number;
+    success: number;
+  }
+) => {
+  try {
+    const bot = new TelegramBot(token);
+    const message = `Current Stats:
+    \n Batch: ${stats.batch}
+    \n Products: ${stats.products}
+    \n Requests: ${stats.requests}
+    \n Success: ${stats.success}
+    \n Errors: ${stats.errors}`;
+    bot.sendMessage(chatId, message);
+  } catch (e) {
+    console.log(e)
+  }
+}

@@ -6,16 +6,20 @@ import { delay, extractNumbersFromString } from '../utils/helpers';
 
 export let errors = 0
 const MAX_RETRIES = 3; // Maximum number of retries
+export let REQUESTS = 0;
 
 export const resetErrors = () => {
   errors = 0
 }
-
+export const resetRequests = () => {
+  REQUESTS = 0
+}
 
 export const altScrapper = async (url: string, selector: string) => {
   let retries = 0;
   while (retries < MAX_RETRIES) {
     try {
+      REQUESTS++;
       // const { data } = await axiosInstance.get(url);
       const { data } = await axios.get(url, {
         timeout: 10000,
@@ -42,7 +46,7 @@ export const altScrapper = async (url: string, selector: string) => {
     } catch (e: any) {
       console.log(e.message)
       retries++;
-      delay(250);
+      delay(1500);
     }
   }
   errors++

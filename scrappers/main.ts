@@ -1,7 +1,8 @@
 import Product, { IProduct } from "../models/product";
-import { altScrapper, errors, resetErrors } from "./alt";
-import { sendTelegramMessage } from "../utils/telegram";
+import { REQUESTS, altScrapper, errors, resetErrors, resetRequests } from "./alt";
+import { sendTelegramMessage, sendTelegramStats } from "../utils/telegram";
 import { delay } from "../utils/helpers";
+import { Request } from "../models/requests";
 
 
 interface IScannedProduct {
@@ -20,15 +21,16 @@ function splitArray(array: any, size: number) {
 
 
 export const watch = async () => {
+  const batch = process.env.BATCH as string;
+
   const date = new Date();
 
   console.log(`This task is running every minute - ${date.getHours()}:${date.getMinutes()}`);
 
   console.time(`${date.getHours()}:${date.getMinutes()}`)
   // get all products that are active
-  const totalLength = await Product.find({ status: 1 }).countDocuments();
-  const p = await Product.find({ status: 1 }).populate('owner');
-  const products = splitArray(p, totalLength / 2);
+  const p = await Product.find({ status: 1 }).populate('owner').sort({ createdAt: -1 }).limit(100).skip((Number(batch) - 1) * 100);
+  const products = splitArray(p, 20);
 
 
   const promises = []
@@ -44,7 +46,7 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(150);
+      await delay(1000);
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
@@ -67,9 +69,6 @@ export const watch = async () => {
 
   // // wait for all promises to resolve
   // const fetchedScannedProducts = await Promise.all(scannedProducts);
-
-
-
 
 
 
@@ -96,7 +95,29 @@ export const watch = async () => {
 
   console.log('Success', p.length - errors);
   console.log('errors', errors);
-  resetErrors()
+
+  const requests = new Request({
+    batch,
+    requests: REQUESTS,
+    products: p.length,
+    failed: errors,
+    success: p.length - errors,
+  })
+  await requests.save();
+
+  sendTelegramStats(
+    process.env.TELEGRAM_TOKEN as string,
+    process.env.TELEGRAM_CHAT_ID as string,
+    {
+      batch: Number(batch),
+      products: p.length,
+      requests: REQUESTS,
+      errors,
+      success: p.length - errors,
+    }
+  )
+  resetErrors();
+  resetRequests();
   delay(10000).then(() => watch())
 }
 //25
