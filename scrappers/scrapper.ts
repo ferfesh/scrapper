@@ -3,8 +3,9 @@ import puppeteer, { type Browser } from 'puppeteer';
 
 export const url = 'https://www.amazon.eg/-/en/Apple-iPhone-14-Pro-128/dp/B0BDJ5CSHF/ref=sr_1_21?pf_rd_i=21832883031&pf_rd_m=A1ZVRGNO5AYLOV&pf_rd_p=2eb88713-dff6-4694-b086-70d6edf29557&pf_rd_r=KMK02S87HF1CSSH13AJN&pf_rd_s=merchandised-search-10&pf_rd_t=101&qid=1685288033&refinements=p_89%3AApple&s=electronics&sr=1-21';
 export const scraper = async (url: string, selector: string) => {
+  console.log(url)
   let browser: Browser | null = null;
-  const timer = Date.now().toString() 
+  // const timer = Date.now().toString()
   // console.time(timer);
   try {
     // browser = await puppeteer.connect({
@@ -17,7 +18,15 @@ export const scraper = async (url: string, selector: string) => {
     // const body = await page.$('body');
 
     // const el = await body?.$('.a-price-whole');
-    const price = await page.$eval('.a-price-whole', (element) => element?.textContent?.trim());
+    let price: any;
+    switch (selector) {
+      case 'Amazon':
+        price = await page.$eval('.a-price-whole', (element) => element?.textContent?.trim());
+        break;
+      case 'Noon':
+        price = await page.$eval('.priceNow', (element) => element?.textContent?.trim());
+        break;
+    }
 
     console.log(price)
 
@@ -64,7 +73,7 @@ export const scraper = async (url: string, selector: string) => {
     // });
 
     // console.log(jobs);
-
+    browser.close();
   } catch (e) {
     console.log(e)
   } finally {

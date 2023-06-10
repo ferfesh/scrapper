@@ -3,6 +3,7 @@ import { REQUESTS, altScrapper, errors, resetErrors, resetRequests } from "./alt
 import { sendTelegramMessage, sendTelegramStats } from "../utils/telegram";
 import { delay } from "../utils/helpers";
 import { Request } from "../models/requests";
+import { scraper } from './scrapper'
 
 
 interface IScannedProduct {
@@ -110,6 +111,7 @@ export const watch = async () => {
     process.env.TELEGRAM_CHAT_ID as string,
     {
       batch: Number(batch),
+      time : `${date.getHours()}:${date.getMinutes()}`,
       products: p.length,
       requests: REQUESTS,
       errors,
@@ -118,6 +120,27 @@ export const watch = async () => {
   )
   resetErrors();
   resetRequests();
-  delay(10000).then(() => watch())
+  // delay(10000).then(() => watch())
 }
-//25
+
+
+
+
+// export const watch = async () => {
+//   const batch = process.env.BATCH as string;
+
+//   const date = new Date();
+
+//   console.log(`This task is running every minute - ${date.getHours()}:${date.getMinutes()}`);
+
+//   console.time(`${date.getHours()}:${date.getMinutes()}`)
+//   // get all products that are active
+//   const p = await Product.find({ status: 1 }).populate('owner').sort({ createdAt: -1 }).limit(100).skip((Number(batch) - 1) * 100);
+//   const products = splitArray(p, 20);
+
+
+//   for (const product of p) {
+//     const data = await scraper(product.url, product.website);
+//   }
+//   console.timeEnd(`${date.getHours()}:${date.getMinutes()}`)
+// }

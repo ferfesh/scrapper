@@ -35,7 +35,7 @@ export const altScrapper = async (url: string, selector: string) => {
 
       switch (selector) {
         case 'Amazon':
-          result = extractNumbersFromString($('.a-price-whole').first().text().trim());
+          result = extractNumbersFromString($('.celwidget .a-section.a-spacing-none.aok-align-center .a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay .a-price-whole').first().text().trim());
           break;
         case 'Noon':
           result = extractNumbersFromString($('.priceNow').first().text().trim());

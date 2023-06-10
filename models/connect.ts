@@ -1,4 +1,5 @@
 import { connect } from "mongoose";
+import { Request } from "./requests";
 
 const connectDatabase = async () => {
   try {

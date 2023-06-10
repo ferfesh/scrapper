@@ -32,6 +32,7 @@ export const sendTelegramStats = async (
   chatId: string,
   stats: {
     batch: number;
+    time: string;
     products: number;
     requests: number;
     errors: number;
@@ -42,6 +43,7 @@ export const sendTelegramStats = async (
     const bot = new TelegramBot(token);
     const message = `Current Stats:
     \n Batch: ${stats.batch}
+    \n Time: ${stats.time}
     \n Products: ${stats.products}
     \n Requests: ${stats.requests}
     \n Success: ${stats.success}
