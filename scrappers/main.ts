@@ -120,7 +120,7 @@ export const watch = async () => {
   )
   resetErrors();
   resetRequests();
-  // delay(10000).then(() => watch())
+  delay(10000).then(() => watch())
 }
 
 
