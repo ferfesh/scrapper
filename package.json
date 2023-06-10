@@ -12,11 +12,9 @@
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@types/got": "^9.6.12",
     "@types/node": "^18.15.11",
     "@types/node-cron": "^3.0.7",
     "@types/node-telegram-bot-api": "^0.61.6",
-    "@types/tunnel": "^0.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
@@ -24,15 +22,13 @@
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
-    "got": "^11.8.1",
     "https-proxy-agent": "^7.0.0",
     "linkedin-jobs-scraper": "^14.0.11",
     "module-alias": "^2.2.2",
     "moment": "^2.29.4",
     "mongoose": "^7.2.2",
     "node-cron": "^3.0.2",
-    "node-telegram-bot-api": "^0.61.0",
-    "tunnel": "^0.0.6"
+    "node-telegram-bot-api": "^0.61.0"
   },
   "_moduleAliases": {
     "@": "."
