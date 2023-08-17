@@ -88,6 +88,7 @@ export const watch = async () => {
         previousPrice: product?.price as number,
         url: product?.url as string
       })
+      await delay(20);
     }
   }
 
