@@ -3,17 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_cron_1 = __importDefault(require("node-cron"));
 require("module-alias/register");
 const dotenv_1 = __importDefault(require("dotenv"));
 const connect_1 = __importDefault(require("./models/connect"));
 const main_1 = require("./scrappers/main");
 dotenv_1.default.config();
 (0, connect_1.default)();
-node_cron_1.default.schedule('*/2 * * * *', main_1.watch, {
-    name: 'Main Job',
-});
-// watch()
+// corn.schedule('*/2 * * * *', watch, {
+//   name: 'Main Job',
+// });
+(0, main_1.watch)();
 // (async () => {
 //     const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 //     console.time('timer')
