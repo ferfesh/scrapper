@@ -21,7 +21,7 @@ export const altScrapper = async (url: string, selector: string) => {
     try {
       REQUESTS++;
       // const { data } = await axiosInstance.get(url);
-      const { data } = await axios.get(`https://hello-world-raspy-waterfall-bc7b.hamedsama1122021.workers.dev/?url=${url}`, {
+      const { data } = await axios.get(`${process.env.PROXY_URL}/?url=${url}`, {
         timeout: 10000,
       });
       const $ = load(data);
