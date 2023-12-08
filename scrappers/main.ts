@@ -26,11 +26,12 @@ export const watch = async () => {
 
   const date = new Date();
 
-  console.log(`This task is running every minute - ${date.getHours()}:${date.getMinutes()}`);
+  console.log(`This task is running every 3 minutes - ${date.getHours()}:${date.getMinutes()}`);
 
   console.time(`${date.getHours()}:${date.getMinutes()}`)
   // get all products that are active
-  const p = await Product.find({ status: 1 }).populate('owner').sort({ createdAt: -1 }).limit(100).skip((Number(batch) - 1) * 100);
+  // const p = await Product.find({ status: 1 }).populate('owner').sort({ createdAt: -1 }).limit(100).skip((Number(batch) - 1) * 100);
+  const p = await Product.find({ status: 1 }).populate('owner')
   const products = splitArray(p, 20);
 
 
@@ -47,12 +48,12 @@ export const watch = async () => {
         };
       });
       promises.push(scannedProductPromise);
-      await delay(1000);
+      // await delay(1000);
     }
     const data = await Promise.all(promises);
     fetchedScannedProducts.push(...data)
     promises.length = 0;
-    await delay(5000)
+    // await delay(5000)
   }
 
   // initiate a promise for each product
@@ -121,7 +122,8 @@ export const watch = async () => {
   )
   resetErrors();
   resetRequests();
-  delay(10000).then(() => watch())
+  // delay(10000).then(() => watch())
+  // watch()
 }
 
 
