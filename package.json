@@ -1,15 +1,16 @@
 {
-  "name": "crawler-juniorjobs",
+  "name": "scrapper",
   "version": "1.0.0",
-  "description": "crawler",
-  "main": "index.ts",
+  "description": "ferfesh scrapper",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "nodemon index.ts",
-    "build" : "tsc -p ."
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+ 
   "keywords": [],
-  "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
+  "author": "Magdi Taha <magdi.taha.1973@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.15.11",
@@ -19,7 +20,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
     "https-proxy-agent": "^7.0.0",
@@ -28,7 +29,7 @@
     "moment": "^2.29.4",
     "mongoose": "^7.2.2",
     "node-cron": "^3.0.2",
-    "node-telegram-bot-api": "^0.61.0"
+    "node-telegram-bot-api": "^0.66.0"
   },
   "_moduleAliases": {
     "@": "."
